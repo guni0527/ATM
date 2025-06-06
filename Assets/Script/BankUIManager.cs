@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class BankUIManager : MonoBehaviour
 {
+
+    public static BankUIManager Instance; //싱글톤
+
+
+
     [Header("Title")]
     public TMP_Text titleText;
     public TMP_Text subTitleText;
@@ -19,9 +24,23 @@ public class BankUIManager : MonoBehaviour
     public Button DepositButton;
     public Button WithdrawButton;
 
-    
 
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }    //기존코드 참조해서 게임매니저 어웨크쪽을 업데이트해서
+
+    }
+
     void Start()
     {
         Refresh();
