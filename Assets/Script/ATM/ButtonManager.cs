@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 public class ButtonManager : MonoBehaviour
 {
@@ -13,6 +14,10 @@ public class ButtonManager : MonoBehaviour
     public GameObject MinusPopup;
     public TMP_InputField DepositMoney;
     public TMP_InputField WithdrawalMoney;
+    public GameObject SignUp;
+    public GameObject Login;
+    public GameObject Error;
+
 
     public void DepositScreen()
     {
@@ -36,6 +41,22 @@ public class ButtonManager : MonoBehaviour
     {
         MinusPopup.SetActive(false);
     }
+    public void ReturnToLogin()
+    {
+        SignUp.SetActive(false);
+
+    }
+    public void ShowSign()
+    {
+        SignUp.SetActive(true);
+    }
+    public void HideError()
+    {
+        SignUp.SetActive(true);
+        Error.SetActive(false);
+    }
+    
+
 
 
     public void Deposit(int Cash)

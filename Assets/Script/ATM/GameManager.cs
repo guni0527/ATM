@@ -42,8 +42,8 @@ public class GameManager : MonoBehaviour
 
     public void Save()
     {
-        string json = JsonUtility.ToJson(userdata);
-        string path = Application.persistentDataPath + "/Data/" + "/userdata.json";
+        string json = JsonUtility.ToJson(userdata);//저장할 데이터를 글자로 만들어줌
+        string path = Application.persistentDataPath + "/Data/" + "/userdata.json";//저장경로
         File.WriteAllText(path, json); //경로의 json 파일을 저장한다.
         Debug.Log("데이터 저장됨: " + path);
     }
@@ -79,6 +79,17 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }    //기존코드 참조해서 게임매니저 어웨크쪽을 업데이트해서
+
+    }
+    public void SetUserData(UserData data)
+    {
+        this.userdata = data;
+        RefreshUI();   
+        Save();        
+    }
+
+    private void RefreshUI()
+    {
 
     }
 }

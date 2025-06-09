@@ -37,7 +37,7 @@ public class BankUIManager : MonoBehaviour
         {
             Destroy(gameObject);
             return;
-        }    //기존코드 참조해서 게임매니저 어웨크쪽을 업데이트해서
+        }    
 
     }
 
