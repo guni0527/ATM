@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine;
 
 
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance; //싱글톤
@@ -22,6 +23,21 @@ public class GameManager : MonoBehaviour
     //클래스 //필드
     public UserData userdata = new UserData("guni", 115000f, 85000f);
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            GameManager.Instance.LoadUserData();
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }    //기존코드 참조해서 게임매니저 어웨크쪽을 업데이트해서
+
+    }
 
     void Start()
     {
@@ -66,21 +82,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            GameManager.Instance.LoadUserData();
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }    //기존코드 참조해서 게임매니저 어웨크쪽을 업데이트해서
-
-    }
+   
     public void SetUserData(UserData data)
     {
         this.userdata = data;
